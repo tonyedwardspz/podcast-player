@@ -1,0 +1,13 @@
+# ignore bin / obj folders and their contents
+bin/
+obj/
+
+# ignore mac files
+.DS_Store
+
+# Ignore .meteor directory
+.meteor/*
+
+# Ignot .vs directory and sub directory
+.vs/
+.vs/*
