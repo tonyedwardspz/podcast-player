@@ -1,15 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="PodcastPlayer.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PodcastPlayer"
-    Shell.FlyoutBehavior="Disabled"
-    Title="PodcastPlayer">
+    xmlns:views="clr-namespace:PodcastPlayer.Views"
+    Shell.FlyoutBehavior="Locked"
+    Title="Podcast Player">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Tony's Podcasts"
+                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/tonys-podcasts"/>
+
+    <ShellContent Title="Wellbeing Podcasts"
+                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/wellbeing-podcasts"/>
+
+    <ShellContent Title="Sleep Podcasts"
+                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/sleep-podcasts"/>
+
+    <ShellContent Title="Archived Podcasts"
+                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/archived-podcasts"/>
 
 </Shell>

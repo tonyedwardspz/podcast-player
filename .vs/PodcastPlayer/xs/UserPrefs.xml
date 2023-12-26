@@ -1,23 +1,24 @@
 ﻿<Properties StartupConfiguration="{ABCB036D-63AE-4C37-ACAE-DE3B05F071D4}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.PodcastPlayer PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PodcastPlayer.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppShell.xaml">
     <Files>
-      <File FileName="PodcastPlayer.csproj" Line="22" Column="52" />
+      <File FileName="PodcastPlayer.csproj" Line="11" Column="69" />
+      <File FileName="AppShell.xaml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PodcastPlayer" expanded="True">
-            <Node name="PodcastPlayer" expanded="True" />
+            <Node name="PodcastPlayer" expanded="True" selected="True">
+              <Node name="AppShell.xaml" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.PodcastPlayer PreferredExecutionTarget="MyAppleMacCatalystID" />
 </Properties>
