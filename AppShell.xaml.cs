@@ -10,14 +10,9 @@ public partial class AppShell : Shell
 		InitializeComponent();
     }
 
-    async void OnMenuItemClicked(object sender, EventArgs e)
+    protected override async void OnNavigating(ShellNavigatingEventArgs args)
     {
-        var flyoutItem = sender as FlyoutItem;
-        if (flyoutItem != null)
-        {
-            Debug.WriteLine("Item selected");
-            string data = "Some Data"; 
-            await Shell.Current.GoToAsync($"{flyoutItem.Route}?data={data}");
-        }
+        base.OnNavigating(args);
+        Debug.WriteLine($"Navigation to {args.Target.Location} started");
     }
 }

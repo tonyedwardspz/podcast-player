@@ -9,10 +9,9 @@ public partial class App : Application
 		InitializeComponent();
 
 		MainPage = new AppShell();
-		Routing.RegisterRoute("libraries/tonys-podcasts", typeof(LibraryPage));
-		Routing.RegisterRoute("libraries/wellbeing-podcasts", typeof(LibraryPage));
-		Routing.RegisterRoute("libraries/sleep-podcasts", typeof(LibraryPage));
-		Routing.RegisterRoute("libraries/archived-podcasts", typeof(LibraryPage));
-		
+		Routing.RegisterRoute("tonys-podcasts", typeof(LibraryPage));
+		Routing.RegisterRoute("wellbeing-podcasts", typeof(LibraryPage));
+		Routing.RegisterRoute("sleep-podcasts", typeof(LibraryPage));
+		Routing.RegisterRoute("archived-podcasts", typeof(LibraryPage));
 	}
 }

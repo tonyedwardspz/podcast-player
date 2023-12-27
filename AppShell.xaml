@@ -5,19 +5,51 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PodcastPlayer"
     xmlns:views="clr-namespace:PodcastPlayer.Views"
-    Shell.FlyoutBehavior="Locked"
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutBackgroundColor="#2196F3"
     Title="Podcast Player">
 
-    <ShellContent Title="Tony's Podcasts"
-                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/tonys-podcasts"/>
+    <Shell.FlyoutHeader >
+        <Grid BackgroundColor="Black"
+              MinimumHeightRequest="200">
+        
+            <Label Text="Podcast Player"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
 
-    <ShellContent Title="Wellbeing Podcasts"
-                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/wellbeing-podcasts"/>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="30,*" Padding="10">
+                <Label
+                    Text="{Binding Title}"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    Grid.Column="1" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
-    <ShellContent Title="Sleep Podcasts"
-                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/sleep-podcasts"/>
+    <FlyoutItem Title="Tony's Podcasts" Icon="podcasts.png">
+        <ShellContent Title="Tony's Podcasts"
+                    ContentTemplate="{DataTemplate views:LibraryPage}" Route="tonys-podcasts"/>
+    </FlyoutItem>
 
-    <ShellContent Title="Archived Podcasts"
-                 ContentTemplate="{DataTemplate views:LibraryPage}" Route="libraries/archived-podcasts"/>
+    <FlyoutItem Title="Wellbeing Podcasts" Icon="podcasts.png">
+        <ShellContent Title="Wellbeing Podcasts"
+                    ContentTemplate="{DataTemplate views:LibraryPage}" Route="wellbeing-podcasts"/>
+    </FlyoutItem>
 
+    <FlyoutItem Title="Sleep Podcasts" Icon="podcasts.png">
+        <ShellContent Title="Sleep Podcasts"
+                    ContentTemplate="{DataTemplate views:LibraryPage}" Route="sleep-podcasts"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Archived Podcasts" Icon="podcasts.png">
+        <ShellContent Title="Archived Podcasts"
+                    ContentTemplate="{DataTemplate views:LibraryPage}" Route="archived-podcasts"/>
+    </FlyoutItem>
 </Shell>
