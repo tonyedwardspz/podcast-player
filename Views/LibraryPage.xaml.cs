@@ -43,6 +43,8 @@ public partial class LibraryPage : ContentPage
 			OnPropertyChanged(nameof(Podcasts));}
 	}
 
+	internal Podcast selectedPodcast;
+
     public LibraryPage()
 	{
 		InitializeComponent();
@@ -99,11 +101,22 @@ public partial class LibraryPage : ContentPage
         return route;
     }
 
-	public void Podcast_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	public async void Podcast_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		Debug.WriteLine("Podcast Selection Changed");
-		var podcast = e.CurrentSelection.FirstOrDefault() as string;
-		Debug.WriteLine($"Selected Podcast: {podcast}");
-		// Shell.Current.GoToAsync($"podcast/{podcast}");
+		try
+		{
+            Debug.WriteLine($"Podcast Selection Changed: {selectedPodcast}");
+            var podcast = e.CurrentSelection.FirstOrDefault() as Podcast;
+            Debug.WriteLine($"Selected Podcast: {podcast.Title}");
+            await Shell.Current.GoToAsync($"{nameof(PodcastPage)}",
+                new Dictionary<string, object>
+                {
+                    ["Podcast"] = podcast
+                });
+        } catch (Exception err)
+		{
+			Debug.WriteLine(err.Message);
+		}
+		
 	}
 }

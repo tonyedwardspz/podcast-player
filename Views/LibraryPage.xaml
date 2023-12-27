@@ -10,7 +10,9 @@
             HorizontalOptions="Center" />
 
         <CollectionView
-            ItemsSource="{Binding Podcasts}">
+            ItemsSource="{Binding Podcasts}"
+            SelectionMode="Single"
+            SelectionChanged="Podcast_SelectionChanged" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
