@@ -9,17 +9,6 @@ namespace PodcastPlayer.Views;
 [QueryProperty(nameof(Podcast), nameof(Podcast))]
 public partial class PodcastPage : ContentPage
 {
-	private string pageTitle = "Welcome to the podcast detail page.";
-	public string PageTitle
-	{
-		get { return pageTitle; }
-		set
-		{
-			pageTitle = value;
-			OnPropertyChanged(nameof(PageTitle));
-		}
-	}
-
 	private ObservableCollection<Episode> episodes;
 	public ObservableCollection<Episode> Episodes
 	{
@@ -44,7 +33,7 @@ public partial class PodcastPage : ContentPage
 		base.OnAppearing();
 		Debug.WriteLine("Podcast Page Appearing");
 		Debug.WriteLine($"Podcast: {Podcast.Title}");
-		PageTitle = $"Welcome to the {Podcast.Title} series page";
+		this.Title = $"{Podcast.Title} series page";
 
 		string[] files = getFiles(Podcast.Folder);
 		Episodes = new ObservableCollection<Episode>(

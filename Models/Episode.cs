@@ -8,8 +8,8 @@ public class Episode
         {
             string[] pathParts = Path.Split('/');
             string fileName = pathParts[pathParts.Length - 1];
-            string[] fileNameParts = fileName.Split('-');
-            string episodeTitle = string.Join(" ", fileNameParts);
+            // string[] fileNameParts = fileName.Split('-');
+            string episodeTitle = fileName.Replace(".mp3", "");
             return episodeTitle;
         }
     }

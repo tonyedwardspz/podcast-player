@@ -6,16 +6,6 @@ namespace PodcastPlayer.Views;
 
 public partial class LibraryPage : ContentPage
 {
-    private string libraryTitle = "Welcome to the library page.";
-    public string LibraryTitle
-    {
-        get { return libraryTitle; }
-        set
-        {
-            libraryTitle = value;
-            OnPropertyChanged(nameof(LibraryTitle));
-        }
-    }
 
     internal Dictionary<string, string> libraries = new Dictionary<string, string>
 	{
@@ -81,7 +71,7 @@ public partial class LibraryPage : ContentPage
 		{
 			var libraryValue = libraries[library];
 			Debug.WriteLine($"Generating title for route '{library}': {libraryValue}");
-			LibraryTitle = $"Welcome to the {libraryValue} library page.";
+			this.Title = $"{libraryValue} library.";
 
 			string[] results = getFolders(libraryValue);
 			Podcasts = new ObservableCollection<Podcast>(results.Select(result => new Podcast(result)));
@@ -108,6 +98,7 @@ public partial class LibraryPage : ContentPage
             Debug.WriteLine($"Podcast Selection Changed: {selectedPodcast}");
             var podcast = e.CurrentSelection.FirstOrDefault() as Podcast;
             Debug.WriteLine($"Selected Podcast: {podcast.Title}");
+
             await Shell.Current.GoToAsync($"{nameof(PodcastPage)}",
                 new Dictionary<string, object>
                 {
@@ -117,6 +108,5 @@ public partial class LibraryPage : ContentPage
 		{
 			Debug.WriteLine(err.Message);
 		}
-		
 	}
 }

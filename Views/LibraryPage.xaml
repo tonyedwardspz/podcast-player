@@ -4,10 +4,6 @@
              x:Class="PodcastPlayer.Views.LibraryPage"
              Title="Library Page">
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding LibraryTitle}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
         <CollectionView
             ItemsSource="{Binding Podcasts}"

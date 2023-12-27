@@ -22,11 +22,9 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" />
             
-            <toolkit:MediaElement x:Name="Player"
-                                  
-                Grid.Row="1"
-
-                />
+            <toolkit:MediaElement
+                x:Name="Player"          
+                Grid.Row="1" />
         </Grid>
     </Shell.FlyoutHeader>
 
