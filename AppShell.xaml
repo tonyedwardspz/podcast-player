@@ -22,10 +22,11 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" />
             
-            <toolkit:MediaElement 
-                x:Name="mediaElement"
+            <toolkit:MediaElement x:Name="Player"
+                                  
                 Grid.Row="1"
-                Source="https://pdst.fm/e/chrt.fm/track/A27C8C/traffic.megaphone.fm/GLT8329172184.mp3" />
+
+                />
         </Grid>
     </Shell.FlyoutHeader>
 

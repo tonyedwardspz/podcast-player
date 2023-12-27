@@ -2,6 +2,7 @@
 using PodcastPlayer.Models;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Views;
 
 namespace PodcastPlayer.Views;
 
@@ -77,5 +78,15 @@ public partial class PodcastPage : ContentPage
 	{
 		var episode = e.CurrentSelection.FirstOrDefault() as Episode;
 		Debug.WriteLine($"Episode Selected: {episode?.Title}");
+
+		if (Shell.Current is AppShell shell)
+        {
+			Debug.WriteLine("Shell is AppShell");
+            MediaElement mediaElement = shell.GetMediaElement();
+			// Now you can use mediaElement
+
+			mediaElement.Source = episode?.Path;
+			mediaElement.Play();
+        }
 	}
 }
