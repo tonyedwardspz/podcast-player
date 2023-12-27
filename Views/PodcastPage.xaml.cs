@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using PodcastPlayer.Models;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui;
 
 namespace PodcastPlayer.Views;
 
@@ -49,6 +50,7 @@ public partial class PodcastPage : ContentPage
 			files.Select(file => new Episode(file, file))
 		);
 		Debug.WriteLine($"Episodes: {Episodes.Count}");
+		
 	}
 
 	public string[] getFiles(string folder)

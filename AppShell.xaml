@@ -3,6 +3,7 @@
     x:Class="PodcastPlayer.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:local="clr-namespace:PodcastPlayer"
     xmlns:views="clr-namespace:PodcastPlayer.Views"
     Shell.FlyoutBehavior="Locked"
@@ -11,13 +12,20 @@
 
     <Shell.FlyoutHeader >
         <Grid BackgroundColor="Black"
-              MinimumHeightRequest="200">
+              MinimumHeightRequest="200"
+              RowDefinitions="Auto, *">
         
             <Label Text="Podcast Player"
+                   Grid.Row="0"
                    TextColor="White"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" />
+            
+            <toolkit:MediaElement 
+                x:Name="mediaElement"
+                Grid.Row="1"
+                Source="https://pdst.fm/e/chrt.fm/track/A27C8C/traffic.megaphone.fm/GLT8329172184.mp3" />
         </Grid>
     </Shell.FlyoutHeader>
 
