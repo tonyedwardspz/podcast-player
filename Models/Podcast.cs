@@ -17,6 +17,28 @@ namespace PodcastPlayer.Models
 			}
 		}
 
+		public string ImageUrl
+		{
+			get
+			{
+				string[] results = new string[1];
+				try
+				{
+					results = Directory.GetFiles(Folder);
+					results = results.Where(file => file.EndsWith(".jpg")).ToArray();
+					if (results.Length > 0)
+					{
+						return results[0];
+					}
+				} catch (Exception e)
+				{
+					Debug.WriteLine(e.Message);
+				}
+				return "https://placehold.co/200X200.png?text=No+Cover\nImage";
+			}
+		}
+		
+
 		public Podcast(string folder)
 		{
 			Debug.WriteLine($"New Podcast: {folder}");

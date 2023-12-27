@@ -50,6 +50,10 @@ public partial class PodcastPage : ContentPage
 		try
 		{
 			results = Directory.GetFiles(folder);
+
+			// remove any files that dont end in .mp3
+			results = results.Where(file => file.EndsWith(".mp3")).ToArray();
+
 			// print files to debug
 			foreach (string file in results)
 			{

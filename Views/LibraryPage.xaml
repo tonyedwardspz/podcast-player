@@ -10,15 +10,28 @@
             SelectionMode="Single"
             SelectionChanged="Podcast_SelectionChanged" >
             <CollectionView.ItemTemplate>
+
                 <DataTemplate>
                     <ContentView>
-                        <StackLayout Orientation="Vertical" >
+                        <Grid RowDefinitions="100"
+                              ColumnDefinitions="100, *">
+
+                            <Image
+                                Grid.Column="0"
+                                Source="{Binding ImageUrl}"
+                                Aspect="AspectFill"
+                                HeightRequest="100"/>
+
                             <Label
+                                Grid.Column="1"
                                 Text="{Binding Title}"
-                                FontAttributes="Bold"/>
-                        </StackLayout>
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Start"/>
+                        </Grid>
+
                     </ContentView>
                 </DataTemplate>
+
             </CollectionView.ItemTemplate>
             
         </CollectionView>
