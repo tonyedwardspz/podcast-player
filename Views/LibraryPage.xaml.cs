@@ -15,8 +15,13 @@ public partial class LibraryPage : ContentPage
 		{"archived-podcasts", "Archived Podcasts"}
 	};
 
+#if MACCATALYST
 	internal string basePath = "/Users/tonyedwardspz/Desktop/podcasts/";
-	internal Dictionary<string, string> folders = new Dictionary<string, string>
+#else
+	internal string basePath = @"D:\Podcasts\";
+#endif
+
+    internal Dictionary<string, string> folders = new Dictionary<string, string>
 	{
         {"tonys-podcasts", "tonys-podcasts"},
         {"wellbeing-podcasts", "wellbeing-podcasts"},

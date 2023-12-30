@@ -12,14 +12,14 @@
 
     <Shell.FlyoutHeader >
         <Grid BackgroundColor="Black"
-              MinimumHeightRequest="200"
-              RowDefinitions="20, 50, 0, Auto, Auto"
-              ColumnDefinitions="*,*">
+              MinimumHeightRequest="500"
+              RowDefinitions="20, 50, 0, Auto, 20,Auto,200"
+              ColumnDefinitions="*,*,*,*">
         
             <Label x:Name="PodcastDetails"
                    Text="Select a podcast"
                    Grid.Row="0"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="4"
                    TextColor="White"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Start"
@@ -29,18 +29,17 @@
             <Label x:Name="EpisodeDetails"
                    Text=" "
                    Grid.Row="1"
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="4"
                    TextColor="White"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center"
-                   
                    />
             
             <toolkit:MediaElement
                 x:Name="Player"          
                 Grid.Row="2"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="4"
                 MediaOpened="OnMediaOpened"
                 ShouldShowPlaybackControls="False"
                 PositionChanged="OnPositionChanged"/>
@@ -48,22 +47,62 @@
             <Slider
                 x:Name="PositionSlider"
                 Grid.Row="3"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="4"
                 MinimumTrackColor="Gray"
                 DragStarted="Slider_DragStarted"
                 DragCompleted="Slider_DragCompleted"/>
+
+            <HorizontalStackLayout
+                Grid.Row="4"
+                Grid.ColumnSpan="4"
+                HorizontalOptions="Center"
+                >
+                <Label x:Name="PositionLabel"
+                        Text="--:--"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        />
+                <Label  Text="//   "
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        />
+                <Label x:Name="DurationLabel"
+                        Text="--:--"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        />
+            </HorizontalStackLayout>
          
             <Button x:Name="PlayPause" Text="Play"
-                    Grid.Column="0" Grid.Row="4"
+                    Grid.Column="0" Grid.Row="5"
                     Margin="10,20"
                     Clicked="OnPlayPauseClicked"
                     IsEnabled="False" />
 
+            <Button x:Name="JumpForward" Text="Jump"
+                    Grid.Column="1" Grid.Row="5"
+                    Margin="10,20"
+                    Clicked="OnJumpClicked"
+                    IsEnabled="False"/>
+
             <Button x:Name="Stop" Text="Stop"
-                    Grid.Column="1" Grid.Row="4"
+                    Grid.Column="2" Grid.Row="5"
                     Margin="10,20"
                     Clicked="OnStopClicked"
                     IsEnabled="False"/>
+
+            <Button x:Name="Next" Text="Next"
+                    Grid.Column="3" Grid.Row="5"
+                    Margin="10,20"
+                    Clicked="OnNextClicked"
+                    IsEnabled="False"/>
+
+            <VerticalStackLayout x:Name="PlaylistArea"
+                                 Grid.Row="6"
+                                 Grid.ColumnSpan="4"/>
         </Grid>
     </Shell.FlyoutHeader>
 
@@ -80,7 +119,7 @@
     </Shell.ItemTemplate>
 
     <FlyoutItem Title="Tony's Podcasts" Icon="podcasts.png">
-        <ShellContent Title="Tony's Podcasts"
+        <ShellContent Title="Tony's Podcasts sdaf"
                     ContentTemplate="{DataTemplate views:LibraryPage}" Route="tonys-podcasts"/>
     </FlyoutItem>
 
