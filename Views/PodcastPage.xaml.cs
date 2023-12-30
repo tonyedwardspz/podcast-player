@@ -50,15 +50,8 @@ public partial class PodcastPage : ContentPage
 		try
 		{
 			results = Directory.GetFiles(folder);
-
-			// remove any files that dont end in .mp3
 			results = results.Where(file => file.EndsWith(".mp3")).ToArray();
-
-			// print files to debug
-			foreach (string file in results)
-			{
-				Debug.Write(file + " - ");
-			}
+			Debug.WriteLine(results.ToString());
 		}
 		catch (Exception ex)
 		{
@@ -67,19 +60,22 @@ public partial class PodcastPage : ContentPage
 		return results;
 	}
 
-	public async void Episode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	public void Episode_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var episode = e.CurrentSelection.FirstOrDefault() as Episode;
 		Debug.WriteLine($"Episode Selected: {episode?.Title}");
 
 		if (Shell.Current is AppShell shell)
         {
-			Debug.WriteLine("Shell is AppShell");
-            MediaElement mediaElement = shell.GetMediaElement();
-			// Now you can use mediaElement
+            MediaElement player = shell.GetPlayer();
+			player.Source = episode?.Path;
+			player.Play();
 
-			mediaElement.Source = episode?.Path;
-			mediaElement.Play();
+			Label details = shell.GetPodcastDetails();
+			details.Text = $"Series: {Podcast.Title}";
+
+			Label episodeDetails = shell.GetEpisodeDetails();
+			episodeDetails.Text = $"Episode: {episode?.Title}";
         }
 	}
 }

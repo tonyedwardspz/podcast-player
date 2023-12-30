@@ -13,18 +13,57 @@
     <Shell.FlyoutHeader >
         <Grid BackgroundColor="Black"
               MinimumHeightRequest="200"
-              RowDefinitions="Auto, *">
+              RowDefinitions="20, 50, 0, Auto, Auto"
+              ColumnDefinitions="*,*">
         
-            <Label Text="Podcast Player"
+            <Label x:Name="PodcastDetails"
+                   Text="Select a podcast"
                    Grid.Row="0"
+                   Grid.ColumnSpan="2"
                    TextColor="White"
                    FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" />
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   />
+
+            <Label x:Name="EpisodeDetails"
+                   Text=" "
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   
+                   />
             
             <toolkit:MediaElement
                 x:Name="Player"          
-                Grid.Row="1" />
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                MediaOpened="OnMediaOpened"
+                ShouldShowPlaybackControls="False"
+                PositionChanged="OnPositionChanged"/>
+
+            <Slider
+                x:Name="PositionSlider"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                MinimumTrackColor="Gray"
+                DragStarted="Slider_DragStarted"
+                DragCompleted="Slider_DragCompleted"/>
+         
+            <Button x:Name="PlayPause" Text="Play"
+                    Grid.Column="0" Grid.Row="4"
+                    Margin="10,20"
+                    Clicked="OnPlayPauseClicked"
+                    IsEnabled="False" />
+
+            <Button x:Name="Stop" Text="Stop"
+                    Grid.Column="1" Grid.Row="4"
+                    Margin="10,20"
+                    Clicked="OnStopClicked"
+                    IsEnabled="False"/>
         </Grid>
     </Shell.FlyoutHeader>
 

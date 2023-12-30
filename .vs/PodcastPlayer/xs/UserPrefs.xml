@@ -1,36 +1,10 @@
 ﻿<Properties StartupConfiguration="{ABCB036D-63AE-4C37-ACAE-DE3B05F071D4}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/LibraryPage.xaml">
-    <Files>
-      <File FileName="App.xaml.cs" Line="15" Column="67" />
-      <File FileName="AppShell.xaml.cs" Line="16" Column="71" />
-      <File FileName="PodcastPlayer.csproj" Line="11" Column="69" />
-      <File FileName="Views/LibraryPage.xaml" Line="10" Column="42" />
-      <File FileName="Views/LibraryPage.xaml.cs" Line="56" Column="59" />
-      <File FileName="global.json" Line="1" Column="1" />
-      <File FileName="../../.nuget/packages/communitytoolkit.maui/7.0.1/readme.txt" Line="37" Column="1" />
-      <File FileName="MauiProgram.cs" Line="14" Column="13" />
-      <File FileName="AppShell.xaml" Line="14" Column="40" />
-      <File FileName="Platforms/MacCatalyst/Program.cs" Line="13" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="PodcastPlayer">
-            <Node name="PodcastPlayer">
-              <Node name="Views" expanded="True">
-                <Node name="LibraryPage.xaml" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.PodcastPlayer PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
