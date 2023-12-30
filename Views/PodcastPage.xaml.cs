@@ -78,8 +78,6 @@ public partial class PodcastPage : ContentPage
 
 			Label episodeDetails = shell.GetEpisodeDetails();
 			episodeDetails.Text = $"Episode: {episode?.Title}";
-
-			//shell.fromPlaylist = false;
         }
 	}
 }

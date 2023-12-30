@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using CommunityToolkit.Maui.Core.Primitives;
 using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.Input;
 using PodcastPlayer.Models;
 
 namespace PodcastPlayer;
@@ -14,6 +15,8 @@ public partial class AppShell : Shell
     public Episode CurrentEpisode { get; set; }
     public ObservableCollection<Episode> CurrentEpisodeList { get; set; } = new ObservableCollection<Episode>();
     public ObservableCollection<Episode> Playlist { get; set; } = new ObservableCollection<Episode>();
+
+    internal bool playlistSelection = false;
 
     public AppShell()
 	{
@@ -127,49 +130,96 @@ public partial class AppShell : Shell
         UpdatePlayList();
     }
 
+    
     void UpdatePlayList()
     {
+        ObservableCollection<Episode> tmpEpisodeList = new ObservableCollection<Episode>();
+        if (playlistSelection)
+            tmpEpisodeList = new ObservableCollection<Episode>(Playlist);
+        else
+            tmpEpisodeList = new ObservableCollection<Episode>(CurrentEpisodeList);
+
         Playlist.Clear();
-        foreach (var episode in CurrentEpisodeList)
+        playlistSelection = false;
+
+        foreach (var episode in tmpEpisodeList)
         {
-            // if the episode is the current episode, add it to the playlist
             if (episode == CurrentEpisode)
             {
-                Playlist.Add(episode);
-                continue;
-            }
-            if (CurrentEpisodeList.IndexOf(episode) > CurrentEpisodeList.IndexOf(CurrentEpisode) && CurrentEpisodeList.IndexOf(episode) < CurrentEpisodeList.IndexOf(CurrentEpisode) + 5)
-            {
-                Playlist.Add(episode);
-                continue;
+                int i = tmpEpisodeList.IndexOf(episode) + 1;
+                for ( int j = i;  j < tmpEpisodeList.Count ; j++)
+                {
+                    Playlist.Add(tmpEpisodeList[j]);
+                    if (j > i + 20)
+                    {
+                        break;
+                    }
+                }
+                break;
             }
         }
 
         PlaylistArea.Clear();
+
+        var count = 0;
         foreach(var episode in Playlist)
         {
             Label lbl = new Label();
             lbl.Text = episode.Title;
             lbl.TextColor = Color.FromArgb("#000000");
             lbl.Margin = new Thickness(0, 0, 0, 10);
+            lbl.MinimumHeightRequest = 37;
+            lbl.VerticalTextAlignment = TextAlignment.Center;
 
-            // make the current episode bold
-            if (episode == CurrentEpisode)
+            lbl.GestureRecognizers.Add(new TapGestureRecognizer
             {
-                lbl.FontAttributes = FontAttributes.Bold;
+                Command = new Command(() => OnPlaylistItemClicked(lbl))
+            });
+
+            if (episode == CurrentEpisode)
+                lbl.FontAttributes = FontAttributes.Bold; 
+            
+            lbl.BackgroundColor = Playlist.IndexOf(episode) % 2 == 0 ? Color.FromArgb("#F0F0F0") : Color.FromArgb("#D0D0D0");
+
+            if (count == 4)
+            {
+                lbl.Opacity = 0.5;
             }
 
-            // alternate the background color between different shades of light grey
-            if (Playlist.IndexOf(episode) % 2 == 0)
+            if (count == 5)
             {
-                lbl.BackgroundColor = Color.FromArgb("#F0F0F0");
-            } else
-            {
-                lbl.BackgroundColor = Color.FromArgb("#D0D0D0");
+                lbl.Opacity = 0.3;
             }
 
             PlaylistArea.Add(lbl);
+
+            if (count == 5)
+            {
+                break;
+            }
+            count++;
         }
         Debug.WriteLine($"Playlist length: {Playlist.Count}");
+    }
+
+    
+    private void OnPlaylistItemClicked(object sender)
+    {
+        playlistSelection = true;
+        var lbl = (Label)sender;
+        var episode = Playlist.Where(episode => episode.Title == lbl.Text).FirstOrDefault();
+        Debug.WriteLine($"Episode Selected: {episode?.Title}");
+
+        if (Shell.Current is AppShell shell)
+        {
+            MediaElement player = shell.GetPlayer();
+            shell.CurrentEpisodeList = Playlist;//
+            shell.CurrentEpisode = episode;
+            player.Source = episode?.Path;
+            player.Play();
+
+            Label episodeDetails = shell.GetEpisodeDetails();
+            episodeDetails.Text = $"Episode: {episode?.Title}";
+        }
     }
 }

@@ -12,8 +12,8 @@
 
     <Shell.FlyoutHeader >
         <Grid BackgroundColor="Black"
-              MinimumHeightRequest="500"
-              RowDefinitions="20, 50, 0, Auto, 20,Auto,200"
+              MinimumHeightRequest="490"
+              RowDefinitions="20, 50, 0, Auto, 20,Auto,Auto"
               ColumnDefinitions="*,*,*,*">
         
             <Label x:Name="PodcastDetails"
@@ -102,7 +102,9 @@
 
             <VerticalStackLayout x:Name="PlaylistArea"
                                  Grid.Row="6"
-                                 Grid.ColumnSpan="4"/>
+                                 Grid.ColumnSpan="4"
+                                 HeightRequest="170"
+                                  />
         </Grid>
     </Shell.FlyoutHeader>
 
