@@ -39,10 +39,6 @@ public partial class PodcastPage : ContentPage
 		Episodes = new ObservableCollection<Episode>(
 			files.Select(file => new Episode(file, file))
 		);
-		if (Shell.Current is AppShell shell)
-        {
-			shell.CurrentEpisodeList = Episodes;
-		}
 		Debug.WriteLine($"Episodes: {Episodes.Count}");
 		
 	}
@@ -82,6 +78,8 @@ public partial class PodcastPage : ContentPage
 
 			Label episodeDetails = shell.GetEpisodeDetails();
 			episodeDetails.Text = $"Episode: {episode?.Title}";
+
+			//shell.fromPlaylist = false;
         }
 	}
 }

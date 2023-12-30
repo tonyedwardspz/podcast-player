@@ -99,12 +99,12 @@ public partial class AppShell : Shell
 
     void OnNextClicked(object sender, EventArgs e)
     {
-        var index = CurrentEpisodeList.IndexOf(CurrentEpisode);
+        var index = Playlist.IndexOf(CurrentEpisode);
        
         Debug.WriteLine($"Current Index: {index}");
-        if (index < CurrentEpisodeList.Count - 1)
+        if (index < Playlist.Count - 1)
         {
-            CurrentEpisode = CurrentEpisodeList[index + 1];
+            CurrentEpisode = Playlist[index + 1];
             Player.Source = CurrentEpisode.Path;
             Player.Play();
             UpdatePlayList();
@@ -130,7 +130,6 @@ public partial class AppShell : Shell
     void UpdatePlayList()
     {
         Playlist.Clear();
-
         foreach (var episode in CurrentEpisodeList)
         {
             // if the episode is the current episode, add it to the playlist
