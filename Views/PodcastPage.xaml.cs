@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using PodcastPlayer.Models;
 using System.Collections.ObjectModel;
-using CommunityToolkit.Maui;
+
 using CommunityToolkit.Maui.Views;
 
 namespace PodcastPlayer.Views;
@@ -37,10 +37,10 @@ public partial class PodcastPage : ContentPage
 
 		string[] files = getFiles(Podcast.Folder);
 		Episodes = new ObservableCollection<Episode>(
-			files.Select(file => new Episode(file, file))
+			files.Select(path => new Episode(path))
 		);
+		Episodes = UpdateEpisodes(Episodes).Result;
 		Debug.WriteLine($"Episodes: {Episodes.Count}");
-		
 	}
 
 	public string[] getFiles(string folder)
@@ -58,6 +58,20 @@ public partial class PodcastPage : ContentPage
 			Debug.WriteLine(ex.Message);
 		}
 		return results;
+	}
+
+	public async Task<ObservableCollection<Episode>> UpdateEpisodes(ObservableCollection<Episode> episodes) 
+	{
+		foreach (Episode episode in episodes)
+		{
+			var file = TagLib.File.Create(episode.Path);
+			episode.Title = file.Tag.Title;
+			episode.Series = file.Tag.Album;
+			episode.EpisodeNumber = (int)file.Tag.Track;
+			episode.Duration = file.Properties.Duration;
+			episode.Published = File.GetCreationTime(episode.Path);
+		}
+		return episodes;
 	}
 
 	public void Episode_SelectionChanged(object sender, SelectionChangedEventArgs e)

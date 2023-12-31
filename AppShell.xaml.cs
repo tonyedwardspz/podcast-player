@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using CommunityToolkit.Maui.Core.Primitives;
 using CommunityToolkit.Maui.Views;
-using CommunityToolkit.Mvvm.Input;
 using PodcastPlayer.Models;
 
 namespace PodcastPlayer;
@@ -180,16 +179,6 @@ public partial class AppShell : Shell
                 lbl.FontAttributes = FontAttributes.Bold; 
             
             lbl.BackgroundColor = Playlist.IndexOf(episode) % 2 == 0 ? Color.FromArgb("#F0F0F0") : Color.FromArgb("#D0D0D0");
-
-            if (count == 4)
-            {
-                lbl.Opacity = 0.5;
-            }
-
-            if (count == 5)
-            {
-                lbl.Opacity = 0.3;
-            }
 
             PlaylistArea.Add(lbl);
 

@@ -35,7 +35,8 @@ public partial class LibraryPage : ContentPage
 		get { return podcasts; }
 		set { 
 			podcasts = value; 
-			OnPropertyChanged(nameof(Podcasts));}
+			OnPropertyChanged(nameof(Podcasts));
+		}
 	}
 
 	internal Podcast selectedPodcast;
@@ -80,7 +81,6 @@ public partial class LibraryPage : ContentPage
 
 			string[] results = getFolders(libraryValue);
 			Podcasts = new ObservableCollection<Podcast>(results.Select(result => new Podcast(result)));
-
 			Debug.WriteLine($"Podcasts: {Podcasts.Count}");
 		}
 		else
