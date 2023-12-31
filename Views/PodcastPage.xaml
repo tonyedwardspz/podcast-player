@@ -3,25 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PodcastPlayer.Views.PodcastPage"
              Title="Podcast Page">
-    <VerticalStackLayout>
-
+    <Grid>
         <CollectionView
             ItemsSource="{Binding Episodes}"
             SelectionMode="Single"
-            SelectionChanged="Episode_SelectionChanged" >
+            SelectionChanged="Episode_SelectionChanged"
+             >
             
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
-                        <StackLayout Orientation="Vertical" >
+                        <Grid ColumnDefinitions="*,Auto"
+                              Margin="15,0,0,5">
                             <Label
                                 Text="{Binding Title}"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                />
+                            <Label
+                                Text="{Binding Duration}"
+                                Grid.Column="1"
                                 FontAttributes="Bold"/>
-                        </StackLayout>
+                        </Grid>
                     </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
             
         </CollectionView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

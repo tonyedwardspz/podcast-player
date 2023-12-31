@@ -103,7 +103,6 @@
             <VerticalStackLayout x:Name="PlaylistArea"
                                  Grid.Row="6"
                                  Grid.ColumnSpan="4"
-                                 HeightRequest="170"
                                   />
         </Grid>
     </Shell.FlyoutHeader>
