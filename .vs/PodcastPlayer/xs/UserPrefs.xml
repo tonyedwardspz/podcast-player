@@ -1,18 +1,13 @@
 ﻿<Properties StartupConfiguration="{ABCB036D-63AE-4C37-ACAE-DE3B05F071D4}|Default">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.PodcastPlayer PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="AppShell.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AppShell.xaml">
     <Files>
-      <File FileName="AppShell.xaml.cs" Line="189" Column="27" />
-      <File FileName="AppShell.xaml" Line="15" Column="39" />
+      <File FileName="AppShell.xaml.cs" Line="182" Column="1" />
+      <File FileName="AppShell.xaml" Line="105" Column="53" />
       <File FileName="Views/LibraryPage.xaml.cs" Line="18" Column="16" />
-      <File FileName="Views/PodcastPage.xaml.cs" Line="80" Column="55" />
-      <File FileName="Platforms/MacCatalyst/Program.cs" Line="13" Column="1" />
+      <File FileName="Views/PodcastPage.xaml.cs" Line="5" Column="35" />
+      <File FileName="Views/PodcastPage.xaml" Line="6" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,20 +19,17 @@
               </Node>
               <Node name="Views">
                 <Node name="LibraryPage.xaml" expanded="True" />
-                <Node name="PodcastPage.xaml" expanded="True" />
               </Node>
-              <Node name="AppShell.xaml">
-                <Node name="AppShell.xaml.cs" selected="True" />
-              </Node>
+              <Node name="AppShell.xaml" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>tmpEpisodeList</Value>
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
